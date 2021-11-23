@@ -14,7 +14,7 @@ def print_slow(str):
 def iceCream():
     choice = ""
     coneOrCup = ""
-    print_slow("Welcome in Papi Gelato you can choose any taste of ice cream you want.\n")
+    print_slow("Welcome in Papi Gelato.\n")
     flavour = input("What flavour would you like with that?\n ⚫ Strawberry.\n ⚫ Chocolate.\n ⚫ Mint.\n ⚫ Vanille.\n").lower()
     amount = int(input("How many ice cream balls would you like?\n"))
     if amount <= 3:
@@ -31,6 +31,7 @@ def iceCream():
         iceCream()
     elif choice == "n":
         print_slow("Thank you and see you again!\n")
+        clearScreen(2)
     else:
         print_slow("Sorry i didnt understand that.\n")
 
