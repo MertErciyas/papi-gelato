@@ -9,7 +9,9 @@ def print_slow(str):
     for letter in str:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        #time.sleep(0.05)
+        time.sleep(0.05)
+
+coneOrCup = False
 
 def iceCream():
     choice = ""
@@ -21,10 +23,13 @@ def iceCream():
         coneOrCup = input(f"Do you want your {amount} {flavour} ice cream balls in a cone or cup?\n")
     elif amount <= 8:
         print_slow(f"You will get a cup with {amount} {flavour} ice cream balls inside.\n")
+        coneOrCup = True
     elif amount > 8:
         print_slow("Sorry, we dont have bigger cups.\n") 
         clearScreen(1)
         iceCream()
+    if coneOrCup == True:
+        coneOrCup = "cup"
     choice = input(f"Here is your {coneOrCup} with {amount} {flavour} ice cream balls. Do you want to order again? (Y/N)\n").lower()
     if choice == "y":
         clearScreen(1)
