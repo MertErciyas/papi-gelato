@@ -42,11 +42,20 @@ def iceCream():
         zakelijk1 = True
         amount = int(input("How many ice cream balls would you like?\n"))
         clearScreen(1)
-        flavour = input("What flavour would you like with that?\n ⚫ Strawberry.\n ⚫ Chocolate.\n ⚫ Vanille.\n").lower()
+        if amount <= 8:
+            i = 1
+            while i <= amount: 
+                Flavour = input("What ice cream taste would je like for the " + str(i) + "\n 1. Strawberry.\n 2. Chocolate.\n 3. Vanille.\n")
+                clearScreen(1)
+                i += 1            
+        else:
+            print_slow("Sorry, we dont have bigger cups.\n") 
+            clearScreen(1)
+            iceCream() 
         if amount <= 3:
-            coneOrCup = input(f"Do you want your {amount} {flavour} ice cream balls in a cone or cup?\n")
+            coneOrCup = input(f"What would you like your ice cream ball(s) in? A cup or a cone?\n")
         elif amount <= 8:
-            print_slow(f"You will get a cup with {amount} {flavour} ice cream balls inside.\n")
+            print_slow(f"You will get a cup with {amount} ice cream balls inside.\n")
             cup = 1
         elif amount > 8:
             print_slow("Sorry, we dont have bigger cups.\n") 
@@ -92,7 +101,7 @@ def iceCream():
             clearScreen
         total = horrentjesKosten + bakjeKosten + bolletjesKosten + toppingPrice
         print(f"\n  --------[Papi Gelato]-------- \n\n Balls   {amount} X {format(bolletjesPrijs,'.2f')} = {format(bolletjesKosten,'.2f')}\n Cones   {cone} X {format(horrentjesPrijs,'.2f')} = {format(horrentjesKosten,'.2f')}\n Cup     {cup} X {format(bakjePrijs,'.2f')} = {format(bakjeKosten,'.2f')}\n Topping 1 X {format(toppingPrice,'.2f')} = {format(toppingPrice,'.2f')}\n-----------------------------\n Total              {format(total,'.2f')}\n")
-        choice = input(f"Here is your order with {amount} {flavour} ice cream balls. Do you want to order again? (Y/N)\n").lower()
+        choice = input(f"Here is your order with {amount} ice cream balls. Do you want to order again? (Y/N)\n").lower()
         if choice == "y":
             clearScreen(1)
             iceCream()
@@ -106,15 +115,24 @@ def iceCream():
         clearScreen(1)
         i = 1
         while i <= liters:
-            literSmaak = input("What ice cream taste would je like for the " + str(i) + "\n ⚫ Strawberry.\n ⚫ Chocolate.\n⚫ Vanille.\n")
+            literSmaak = input("What ice cream taste would je like for the " + str(i) + "\n 1. Strawberry.\n 2. Chocolate.\n 3. Vanille.\n")
             clearScreen(1)
             i += 1
         literKosten = liters * 9.80
-        btw = literKosten * 0.06
-        print(f"--------[Papi Gelato]--------\n\nLiter  {liters} X €9,80 = {format(literKosten,'.2f')}\n                -------\nTotale           = {format(literKosten,'.2f')}\nBTW (9%)         = {format(btw,'.2f')}\n\n----------------------------- ")
+        btw = (literKosten / 106) * 6 
+        print(f"--------[Papi Gelato]--------\n\nLiter  {liters} X €9,80 = {format(literKosten,'.2f')}\n                -------\nTotale           = {format(literKosten,'.2f')}(9%) BTW         = {format(btw,'.2f')} \n\n----------------------------- ")
+        choice = input(f"Here is your order with {liters} liters of ice cream. Do you want to order again? (Y/N)\n").lower()
+        if choice == "y":
+            clearScreen(1)
+            iceCream()
+        elif choice == "n":
+            print_slow("Thank you and see you again!\n")
+            clearScreen(2)
+        else:
+            print_slow("Sorry i didnt understand that.\n")
     else:
         print("Sorry, thats not a option that we have.")
         clearScreen(2)
-        iceCream()
+        exit()
 
 iceCream()
