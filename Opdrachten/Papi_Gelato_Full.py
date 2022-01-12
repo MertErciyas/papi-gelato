@@ -9,7 +9,7 @@ def print_slow(str):
     for letter in str:
         sys.stdout.write(letter)
         sys.stdout.flush()
-        time.sleep(0.05)
+        #time.sleep(0.05)
 
 reciept = [""]
 
@@ -122,6 +122,7 @@ def iceCream():
             print_slow("Thank you and see you again! Here is your reciept\n")
             total += horrentjesKosten + bakjeKosten + bolletjesKosten + toppingPrice
             print(f'{reciept} \n total {total}')
+            #clearScreen(5)
         else:
             print_slow("Sorry i didnt understand that.\n")
     elif zakelijk == "2":
